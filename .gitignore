@@ -122,5 +122,4 @@ ehthumbs.db
 Thumbs.db
 
 # Project specific
-*.csv
 *.log 

@@ -21,9 +21,9 @@ SOURCE_CONTAINER = 'datosvs2020'
 DESTINATION_CONTAINER = 'sip'
 SQL_SERVER = 'tcp:penazsqlmicred00-test.eadf80c68004.database.windows.net'
 SQL_DATABASE = 'ScanVisionISO'
-SQL_USERNAME = 'gbojorge'
-SQL_PASSWORD = 'bojorge123*'
-MAX_WORKERS = 16
+SQL_USERNAME = ''
+SQL_PASSWORD = '*'
+MAX_WORKERS = 10
 MAX_RETRIES = 3
 RETRY_DELAY = 5
 PROCESADOS_FILE = "archivos_procesados.csv"
@@ -182,7 +182,7 @@ def procesar_blob(blob):
 
 if __name__ == "__main__":
     #Conexiones a Azure
-    blob_service_client = BlobServiceClient.from_connection_string(AZURE_STORAGE_CONNECTION_STRING,transport=transport)    
+    blob_service_client = BlobServiceClient.from_connection_string(AZURE_STORAGE_CONNECTION_STRING,connection_pool_maxsize=50)    
     source_container_client = blob_service_client.get_container_client(SOURCE_CONTAINER)        
    
    
