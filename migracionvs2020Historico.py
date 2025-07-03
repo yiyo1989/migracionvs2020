@@ -18,7 +18,7 @@ from azure.core.pipeline.transport import RequestsTransport
 # Configuración
 AZURE_STORAGE_CONNECTION_STRING = ''
 SOURCE_CONTAINER = 'datosvs2020'
-DESTINATION_CONTAINER = 'sip'
+DESTINATION_CONTAINER = 'sip-historico'
 SQL_SERVER = 'tcp:penazsqlmicred00-test.eadf80c68004.database.windows.net'
 SQL_DATABASE = 'ScanVisionISO'
 SQL_USERNAME = 'gbojorge'
@@ -26,10 +26,10 @@ SQL_PASSWORD = 'bojorge123*'
 MAX_WORKERS = 10
 MAX_RETRIES = 3
 RETRY_DELAY = 5
-PROCESADOS_FILE = "archivos_procesados.csv"
-ERRORES_FILE = "archivos_con_error.csv"
-NO_METADATA_FILE ="archivos_sin_metadata.csv"
-DIRECTORIOS_PROCESADOS_FILE="directorios_procesados.csv"
+PROCESADOS_FILE = "archivos_procesados_historico.csv"
+ERRORES_FILE = "archivos_con_error_historico.csv"
+NO_METADATA_FILE ="archivos_sin_metadata_historico.csv"
+DIRECTORIOS_PROCESADOS_FILE="directorios_procesados_historico.csv"
 # Logging
 logging.basicConfig(
     #filename='migracion_tiempo.log',
@@ -198,7 +198,7 @@ if __name__ == "__main__":
       
     # Obtener todos los blobs y extraer los directorios virtuales únicos
     #all_blobs = list(source_container_client.list_blobs())
-    prefix = "migracionvs2020/"
+    prefix = "migracionvs2020Historico1/"
     result = source_container_client.walk_blobs(name_starts_with=prefix, delimiter="/")
     
     directorios = [item.name for item in result if hasattr(item, "name")]
